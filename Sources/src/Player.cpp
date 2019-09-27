@@ -38,10 +38,15 @@ void Player::CallInput()
         ++x;
         std::cout << "The player go to right \n";
         break;
+    default:
+        system ("CLS");
+        std::cout << "\n";
+        break;
     }
+    
     std::cout << "==========================\n";
     std::cout << "---->  MY PLAYER IS  <----\n";
     std::cout << "\tx: "<< x << "; y: " << y << ";\n";
-    std::cout << "==========================\n";
-    std::cout << "Your input: ";
+    std::cout << "==========================\n\n\n";
+
 }
