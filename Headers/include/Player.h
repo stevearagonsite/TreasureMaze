@@ -5,6 +5,8 @@ class Player
 {
 private:
     /* data */
+protected:
+    int x,y;
 public:
     Player(/* args */);
     ~Player();
