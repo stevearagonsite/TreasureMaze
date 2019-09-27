@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h> // WinApi header 
 
 #include "../Headers/include/Player.h"
 #include "./src/Player.cpp"
@@ -14,12 +15,15 @@ int main(){
     system ("CLS");
     std::cout << "Welcome to the treause maze!! \n\n\n";
     std::cout << "Press any key to continue...";
-    std::cin;
+    std::cin.get(); // wait
+    std::cout << '\a'; //sound inital
+
 
     while (!bIsGameOver){
         Hero.CallInput();
         Map.SetPlayerCell(Hero.X, Hero.Y);
         Map.Draw();
+        Beep(523,500);
         std::cout << "Your input: ";
         std::cin.clear(); // Clears any errors
         std::cin.ignore(); // Discard the buffer
