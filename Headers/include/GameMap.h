@@ -1,8 +1,6 @@
 #ifndef GAME_MAP_H
 #define GAME_MAP_H
 
-#include "./MapCell.h";
-
 class GameMap
 {
 private:
@@ -10,10 +8,12 @@ private:
 protected:
     /* data */
 public:
+    MapCell Cells[15][10];
+    MapCell* PlayerCell; 
     GameMap(/* args */);
     ~GameMap();
-    MapCell Cells[15][10]; 
     void Draw();
+    void SetPlayerCell(int PlayerX, int PlayerY);
 };
 
 #endif // GAME_MAP_H

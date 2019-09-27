@@ -3,6 +3,7 @@
 
 GameMap::GameMap(/* args */)
 {
+    PlayerCell = NULL;
 }
 
 GameMap::~GameMap()
@@ -18,4 +19,19 @@ void GameMap::Draw()
 
         std::cout << std::endl;
     }
+}
+
+void GameMap::SetPlayerCell(int PlayerX, int PlayerY)
+{
+    if (PlayerCell != NULL){
+        PlayerCell->ID = 0;
+    }
+    
+    PlayerCell = &Cells[PlayerY][PlayerX];
+    PlayerCell->ID = 1;
+
+    std::cout << "==========================\n";
+    std::cout << "---->  MY PLAYER IS  <----\n";
+    std::cout << "\tx: "<< PlayerX << "; y: " << PlayerY << ";\n";
+    std::cout << "==========================\n\n";
 }

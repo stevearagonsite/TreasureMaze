@@ -1,7 +1,7 @@
 #include "../../Headers/include/MapCell.h"
 #include <iostream>
 
-MapCell::MapCell(/* args */)
+MapCell::MapCell()
 {
     ID = 0;
 }

@@ -3,8 +3,8 @@
 
 Player::Player()
 {
-    x = 1;
-    y = 1;
+    X = 0;
+    Y = 0;
 }
 
 Player::~Player()
@@ -20,22 +20,22 @@ void Player::CallInput()
     {
     case 'w':
         system ("CLS");
-        ++y;
+        --Y;
         std::cout << "The player go to up \n";
         break;
     case 's':
         system ("CLS");
-        --y;
+        ++Y;
         std::cout << "The player go to down \n";
         break;
     case 'a':
         system ("CLS");
-        --x;
+        --X;
         std::cout << "The player go to left \n";
         break;
     case 'd':
         system ("CLS");
-        ++x;
+        ++X;
         std::cout << "The player go to right \n";
         break;
     default:
@@ -43,10 +43,5 @@ void Player::CallInput()
         std::cout << "\n";
         break;
     }
-    
-    std::cout << "==========================\n";
-    std::cout << "---->  MY PLAYER IS  <----\n";
-    std::cout << "\tx: "<< x << "; y: " << y << ";\n";
-    std::cout << "==========================\n\n\n";
 
 }

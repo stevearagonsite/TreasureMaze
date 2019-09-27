@@ -18,6 +18,7 @@ int main(){
 
     while (!bIsGameOver){
         Hero.CallInput();
+        Map.SetPlayerCell(Hero.X, Hero.Y);
         Map.Draw();
         std::cout << "Your input: ";
         std::cin.clear(); // Clears any errors

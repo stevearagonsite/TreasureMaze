@@ -6,8 +6,10 @@ class Player
 private:
     /* data */
 protected:
-    int x,y;
+    /* data */
 public:
+    int X,Y;
+
     Player(/* args */);
     ~Player();
     void CallInput();
