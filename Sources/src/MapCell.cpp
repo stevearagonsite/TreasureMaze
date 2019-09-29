@@ -9,3 +9,8 @@ MapCell::MapCell()
 MapCell::~MapCell()
 {
 }
+
+bool MapCell::IsBlocked()
+{
+    return false;
+}

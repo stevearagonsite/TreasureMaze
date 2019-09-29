@@ -10,7 +10,7 @@ protected:
 public:
     MapCell Cells[15][10];
     MapCell* PlayerCell; 
-    GameMap(/* args */);
+    GameMap();
     ~GameMap();
     void Draw();
     void SetPlayerCell(int PlayerX, int PlayerY);

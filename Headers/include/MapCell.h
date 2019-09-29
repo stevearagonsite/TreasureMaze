@@ -9,8 +9,9 @@ protected:
     /* data */
 public:
     char ID;
-    MapCell(/* args */);
+    MapCell();
     ~MapCell();
+    bool IsBlocked();
 };
 
 #endif // MAP_CELL_H

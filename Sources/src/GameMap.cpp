@@ -18,7 +18,19 @@ void GameMap::Draw()
 {
     for(int i = 0; i < 15; i = i + 1){
         for (int j = 0; j < 10; j++){
-            std::cout << Cells[i][j].ID;
+
+            switch (Cells[i][j].ID )
+            {
+            case '0':
+                std::cout << '\0';
+                break;
+            case '1':
+                std::cout << '|';
+                break;
+            default:
+                std::cout << Cells[i][j].ID ;
+                break;
+            }
         }
 
         std::cout << std::endl;
@@ -55,13 +67,8 @@ void GameMap::LoadMapFromFile()
         while (getline(MyFile, Line,'\n')){
 
             for (int p = 0; p < Line.length(); p++){
-                if (Line[p] == '0'){
-                    Cells[Row][p].ID = 0;
-                }else{
-                    Cells[Row][p].ID = '|';
-                }
+                Cells[Row][p].ID = Line[p];
             }
-
             ++Row;
         }
     }else{
@@ -75,6 +82,6 @@ void GameMap::ClearScreen()
     std::system("cls");
 #else
     // Assume POSIX
-    std::system ("clear");
+    std::system ("cls");
 #endif
 }
