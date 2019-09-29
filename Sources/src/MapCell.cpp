@@ -12,5 +12,9 @@ MapCell::~MapCell()
 
 bool MapCell::IsBlocked()
 {
-    return false;
+    if (ID == '1'){
+        return true;
+    }else{
+        return false;
+    }
 }

@@ -9,10 +9,12 @@ protected:
     /* data */
 public:
     int X,Y;
+    int LastX,LastY;
 
     Player(/* args */);
     ~Player();
     void CallInput();
+    void ResetToSafePosition();
 };
 
 #endif // PLAYER_H

@@ -22,8 +22,15 @@ int main(){
     while (!bIsGameOver){
         Hero.CallInput();
         Map.LoadMapFromFile();
-        Map.SetPlayerCell(Hero.X, Hero.Y);
-        Map.Draw();
+
+        if (Map.SetPlayerCell(Hero.X, Hero.Y)){
+            Map.Draw();
+        }else{
+            Hero.ResetToSafePosition();
+            Map.SetPlayerCell(Hero.X, Hero.Y);
+            Map.Draw();
+        }
+        
         Beep(523,500);
         std::cout << "Your input: ";
         std::cin.clear(); // Clears any errors

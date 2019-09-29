@@ -3,8 +3,8 @@
 
 Player::Player()
 {
-    X = 0;
-    Y = 0;
+    X = 1;
+    Y = 1;
 }
 
 Player::~Player()
@@ -19,19 +19,28 @@ void Player::CallInput()
     switch (UserInput)
     {
     case 'w':
+        LastY = Y;
         --Y;
         break;
     case 's':
+        LastY = Y;
         ++Y;
         break;
     case 'a':
+        LastX = X;
         --X;
         break;
     case 'd':
+        LastX = X;
         ++X;
         break;
     default:
         break;
     }
+}
 
+void Player::ResetToSafePosition()
+{
+    X = LastX;
+    Y = LastY;
 }

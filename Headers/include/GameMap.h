@@ -6,14 +6,14 @@ class GameMap
 private:
     /* data */
 protected:
-    /* data */
+    void DrawPlayerPosition(int PlayerX,int PlayerY);
 public:
     MapCell Cells[15][10];
     MapCell* PlayerCell; 
     GameMap();
     ~GameMap();
     void Draw();
-    void SetPlayerCell(int PlayerX, int PlayerY);
+    bool SetPlayerCell(int PlayerX, int PlayerY);
     void LoadMapFromFile();
     void ClearScreen();
 };

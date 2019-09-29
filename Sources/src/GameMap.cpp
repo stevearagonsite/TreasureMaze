@@ -16,10 +16,10 @@ GameMap::~GameMap()
 
 void GameMap::Draw()
 {
-    for(int i = 0; i < 15; i = i + 1){
-        for (int j = 0; j < 10; j++){
+    for(int FirstCount = 0; FirstCount < 15; ++FirstCount){
+        for (int SecondCount = 0; SecondCount < 10; ++SecondCount){
 
-            switch (Cells[i][j].ID )
+            switch (Cells[FirstCount][SecondCount].ID )
             {
             case '0':
                 std::cout << '\0';
@@ -28,7 +28,7 @@ void GameMap::Draw()
                 std::cout << '|';
                 break;
             default:
-                std::cout << Cells[i][j].ID ;
+                std::cout << Cells[FirstCount][SecondCount].ID ;
                 break;
             }
         }
@@ -37,17 +37,24 @@ void GameMap::Draw()
     }
 }
 
-void GameMap::SetPlayerCell(int PlayerX, int PlayerY)
+bool GameMap::SetPlayerCell(int PlayerX, int PlayerY)
 {
+    if (Cells[PlayerY][PlayerX].IsBlocked()){
+        return false;
+    }
+    
     ClearScreen();
-
     if (PlayerCell != NULL){
         PlayerCell->ID = 0;
     }
-    
+
     PlayerCell = &Cells[PlayerY][PlayerX];
     PlayerCell->ID = '*';
+    DrawPlayerPosition(PlayerX, PlayerY);
+    return true;
+}
 
+void GameMap::DrawPlayerPosition(int PlayerX,int PlayerY){
     std::cout << "==========================\n";
     std::cout << "---->  MY PLAYER IS  <----\n";
     std::cout << "\tx: "<< PlayerX << "; y: " << PlayerY << ";\n";
@@ -66,8 +73,8 @@ void GameMap::LoadMapFromFile()
     if (MyFile.is_open()){
         while (getline(MyFile, Line,'\n')){
 
-            for (int p = 0; p < Line.length(); p++){
-                Cells[Row][p].ID = Line[p];
+            for (int Count = 0; Count < Line.length(); ++Count){
+                Cells[Row][Count].ID = Line[Count];
             }
             ++Row;
         }
