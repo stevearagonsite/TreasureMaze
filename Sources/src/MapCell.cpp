@@ -3,7 +3,7 @@
 
 MapCell::MapCell()
 {
-    ID = 0;
+    ID = '0';
 }
 
 MapCell::~MapCell()

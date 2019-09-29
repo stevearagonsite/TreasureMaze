@@ -1,5 +1,9 @@
-#include "../../Headers/include/GameMap.h"
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <cstdlib>
+
+#include "../../Headers/include/GameMap.h"
 
 GameMap::GameMap(/* args */)
 {
@@ -23,15 +27,54 @@ void GameMap::Draw()
 
 void GameMap::SetPlayerCell(int PlayerX, int PlayerY)
 {
+    ClearScreen();
+
     if (PlayerCell != NULL){
         PlayerCell->ID = 0;
     }
     
     PlayerCell = &Cells[PlayerY][PlayerX];
-    PlayerCell->ID = 1;
+    PlayerCell->ID = '*';
 
     std::cout << "==========================\n";
     std::cout << "---->  MY PLAYER IS  <----\n";
     std::cout << "\tx: "<< PlayerX << "; y: " << PlayerY << ";\n";
     std::cout << "==========================\n\n";
+}
+
+void GameMap::LoadMapFromFile()
+{
+    // Create the file!
+    // std::ofstream FileCreated("./Map.txt");
+
+    int Row = 0;
+    std::string Line = "";
+    std::ifstream MyFile("./Map.txt");
+
+    if (MyFile.is_open()){
+        while (getline(MyFile, Line,'\n')){
+
+            for (int p = 0; p < Line.length(); p++){
+                if (Line[p] == '0'){
+                    Cells[Row][p].ID = 0;
+                }else{
+                    Cells[Row][p].ID = '|';
+                }
+            }
+
+            ++Row;
+        }
+    }else{
+        std::cout << "FATAL ERROR: MAP FILE COULD NOT BE LOADED! \n";
+    }
+}
+
+void GameMap::ClearScreen()
+{
+#ifdef WINDOWS
+    std::system("cls");
+#else
+    // Assume POSIX
+    std::system ("clear");
+#endif
 }

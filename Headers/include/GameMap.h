@@ -14,6 +14,8 @@ public:
     ~GameMap();
     void Draw();
     void SetPlayerCell(int PlayerX, int PlayerY);
+    void LoadMapFromFile();
+    void ClearScreen();
 };
 
 #endif // GAME_MAP_H

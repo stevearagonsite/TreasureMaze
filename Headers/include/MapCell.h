@@ -8,7 +8,7 @@ private:
 protected:
     /* data */
 public:
-    int ID;
+    char ID;
     MapCell(/* args */);
     ~MapCell();
 };
