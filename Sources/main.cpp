@@ -9,10 +9,9 @@
 #include "./src/GameMap.cpp"
 
 int main(){
-    bool bIsGameOver = false;
     GameMap Map;
     Map.ClearScreen();
-    Map.DrawIntro();
+    Map.DrawASCII("./Intro.txt");
     std::cout << '\a'; //sound inital
     std::cout << "Welcome to the treause maze!! \n";
     std::cout << "Press any key to continue...";
@@ -20,9 +19,9 @@ int main(){
     int InitialPositionX, InitialPositionY;
     Map.GetInitialPlayerPosition(&InitialPositionX, &InitialPositionY);
     Player Hero(InitialPositionX, InitialPositionY);
-
-    while (!bIsGameOver){
-        std::cout << "Enter the move command \'W\' \'A\' \'S\' \'D\' \n";
+    Map.Draw();
+    
+    while (!Map.bIsGameOver){
         Hero.CallInput();
         Map.LoadMapFromFile();
 
@@ -33,7 +32,8 @@ int main(){
             Map.SetPlayerCell(Hero.X, Hero.Y);
             Map.Draw();
         }
-        
+
+        std::cout << "Enter the move command \'W\' \'A\' \'S\' \'D\' \n";
         Beep(523,500);
         std::cin.clear(); // Clears any errors
         std::cin.ignore(); // Discard the buffer

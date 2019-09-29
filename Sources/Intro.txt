@@ -6,8 +6,8 @@
 |             |\../|              |
 |              \VV/               |
 |          Treasure Maze!         |
-|               by                | 
-|           Steve Aragón          |
+|               by                |
+|           Steve Aragon          |
 |_________________________________|
  |    /\ /      \\       \ /\    | 
  |  /   V        ))       V   \  | 

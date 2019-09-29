@@ -8,6 +8,7 @@
 GameMap::GameMap()
 {
     PlayerCell = NULL;
+    bIsGameOver = false;
 }
 
 GameMap::~GameMap()
@@ -37,10 +38,10 @@ void GameMap::GetInitialPlayerPosition(int* InitialPositionX,int* InitialPositio
     }
 }
 
-void GameMap::DrawIntro()
+void GameMap::DrawASCII(std::string Path)
 {
     std::string Line = "";
-    std::ifstream MyFile("./Intro.txt");
+    std::ifstream MyFile(Path);
 
     if (MyFile.is_open()){
         while (getline(MyFile, Line)){
@@ -48,7 +49,7 @@ void GameMap::DrawIntro()
         }
         std::cout << "\n\n\n";
     }else{
-        std::cout << "FATAL ERROR: INTRO FILE COULD NOT BE LOADED! \n";
+        std::cout << "FATAL ERROR: PATH FILE COULD NOT BE LOADED! \n";
     }
 }
 
@@ -69,7 +70,7 @@ void GameMap::Draw()
                 std::cout << '\0';
                 break;
             case '3': // Treasure
-                std::cout << '@';
+                std::cout << '$';
                 break;
             default:
                 std::cout << Cells[FirstCount][SecondCount].ID ;
@@ -86,7 +87,13 @@ bool GameMap::SetPlayerCell(int PlayerX, int PlayerY)
     if (Cells[PlayerY][PlayerX].IsBlocked()){
         return false;
     }
-    
+    if (Cells[PlayerY][PlayerX].ID == '3'){
+        ClearScreen();
+
+        DrawASCII("./Victory.txt");
+        bIsGameOver = true;
+        return true;
+    }
     ClearScreen();
     if (PlayerCell != NULL){
         PlayerCell->ID = 0;
