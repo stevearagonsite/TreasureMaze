@@ -14,6 +14,20 @@ GameMap::~GameMap()
 {
 }
 
+void GameMap::DrawIntro()
+{
+    std::string Line = "";
+    std::ifstream MyFile("./Intro.txt");
+
+    if (MyFile.is_open()){
+        while (getline(MyFile, Line)){
+            std::cout << Line << '\n';
+        }
+    }else{
+        std::cout << "FATAL ERROR: INTRO FILE COULD NOT BE LOADED! \n";
+    }
+}
+
 void GameMap::Draw()
 {
     for(int FirstCount = 0; FirstCount < 15; ++FirstCount){

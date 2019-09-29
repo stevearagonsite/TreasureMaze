@@ -14,6 +14,7 @@ int main(){
     GameMap Map;
     Map.ClearScreen();
     std::cout << '\a'; //sound inital
+    Map.DrawIntro();
     std::cout << "Welcome to the treause maze!! \n\n\n";
     std::cout << "Press any key to continue...";
     std::cin;

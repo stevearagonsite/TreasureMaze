@@ -12,6 +12,7 @@ public:
     MapCell* PlayerCell; 
     GameMap();
     ~GameMap();
+    void DrawIntro();
     void Draw();
     bool SetPlayerCell(int PlayerX, int PlayerY);
     void LoadMapFromFile();
