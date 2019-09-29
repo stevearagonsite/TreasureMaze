@@ -10,17 +10,19 @@
 
 int main(){
     bool bIsGameOver = false;
-    Player Hero;
     GameMap Map;
     Map.ClearScreen();
-    std::cout << '\a'; //sound inital
     Map.DrawIntro();
-    std::cout << "Welcome to the treause maze!! \n\n\n";
+    std::cout << '\a'; //sound inital
+    std::cout << "Welcome to the treause maze!! \n";
     std::cout << "Press any key to continue...";
     std::cin;
-
+    int InitialPositionX, InitialPositionY;
+    Map.GetInitialPlayerPosition(&InitialPositionX, &InitialPositionY);
+    Player Hero(InitialPositionX, InitialPositionY);
 
     while (!bIsGameOver){
+        std::cout << "Enter the move command \'W\' \'A\' \'S\' \'D\' \n";
         Hero.CallInput();
         Map.LoadMapFromFile();
 
@@ -33,7 +35,6 @@ int main(){
         }
         
         Beep(523,500);
-        std::cout << "Your input: ";
         std::cin.clear(); // Clears any errors
         std::cin.ignore(); // Discard the buffer
     }

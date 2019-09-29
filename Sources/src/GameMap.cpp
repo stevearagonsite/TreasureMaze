@@ -5,13 +5,36 @@
 
 #include "../../Headers/include/GameMap.h"
 
-GameMap::GameMap(/* args */)
+GameMap::GameMap()
 {
     PlayerCell = NULL;
 }
 
 GameMap::~GameMap()
 {
+}
+
+void GameMap::GetInitialPlayerPosition(int* InitialPositionX,int* InitialPositionY){
+    int CountY = 0;
+    std::string Line = "";
+    std::ifstream MyFile("./Map.txt");
+
+    if (MyFile.is_open()){
+        while (getline(MyFile, Line,'\n')){
+
+            for (int CountX = 0; CountX < Line.length(); ++CountX){
+                if(Line[CountX] == '2'){
+                    *InitialPositionX = CountX;
+                    *InitialPositionY = CountY;
+                    return;
+                }
+            }
+            ++CountY;
+        }
+        std::cout << "FATAL ERROR: MAP FILE HAS NOT INITIAL POSITION! \n";
+    }else{
+        std::cout << "FATAL ERROR: MAP FILE COULD NOT BE LOADED! \n";
+    }
 }
 
 void GameMap::DrawIntro()
@@ -23,6 +46,7 @@ void GameMap::DrawIntro()
         while (getline(MyFile, Line)){
             std::cout << Line << '\n';
         }
+        std::cout << "\n\n\n";
     }else{
         std::cout << "FATAL ERROR: INTRO FILE COULD NOT BE LOADED! \n";
     }
@@ -35,11 +59,17 @@ void GameMap::Draw()
 
             switch (Cells[FirstCount][SecondCount].ID )
             {
-            case '0':
+            case '0': // Empty
                 std::cout << '\0';
                 break;
-            case '1':
+            case '1': // Wall
                 std::cout << '|';
+                break;
+            case '2': // Initial position
+                std::cout << '\0';
+                break;
+            case '3': // Treasure
+                std::cout << '@';
                 break;
             default:
                 std::cout << Cells[FirstCount][SecondCount].ID ;

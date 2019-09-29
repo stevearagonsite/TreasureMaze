@@ -14,6 +14,7 @@ public:
     ~GameMap();
     void DrawIntro();
     void Draw();
+    void GetInitialPlayerPosition(int* InitialPositionX,int* InitialPositionY);
     bool SetPlayerCell(int PlayerX, int PlayerY);
     void LoadMapFromFile();
     void ClearScreen();

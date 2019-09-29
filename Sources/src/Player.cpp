@@ -1,10 +1,10 @@
 #include "../../Headers/include/Player.h"
 #include <iostream>
 
-Player::Player()
+Player::Player(int InitialPositionX,int InitialPositionY)
 {
-    X = 1;
-    Y = 1;
+    X = InitialPositionX;
+    Y = InitialPositionY;
 }
 
 Player::~Player()

@@ -11,7 +11,7 @@ public:
     int X,Y;
     int LastX,LastY;
 
-    Player(/* args */);
+    Player(int InitialPositionX,int InitialPositionY);
     ~Player();
     void CallInput();
     void ResetToSafePosition();
